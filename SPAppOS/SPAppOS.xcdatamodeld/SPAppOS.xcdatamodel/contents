@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Position" representedClassName="Position" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="like" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="positionDescription" optional="YES" attributeType="String"/>
+        <attribute name="positionImage" optional="YES" attributeType="String"/>
+        <attribute name="positionName" optional="YES" attributeType="String"/>
+        <attribute name="positionNum" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="PositionDates" representedClassName="PositionDates" syncable="YES" codeGenerationType="class">
+        <attribute name="dateAssigned" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="positionNum" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="Position" positionX="-120.9765625" positionY="-266.984375" width="128" height="133"/>
+        <element name="PositionDates" positionX="-63" positionY="18" width="128" height="88"/>
+    </elements>
+</model>
