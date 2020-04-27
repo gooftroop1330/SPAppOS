@@ -10,6 +10,47 @@ import SwiftUI
 
 struct WelcomeView: View {
     @Binding var currView: String
+    @Binding var selectedPosition: Position?
+    @Binding var positionArray: [Position]
+    @Binding var popPositionArray: [PositionDates]
+    
+    func setInitialPosition() {
+        let today = trimTime(toBeTrimmed: createStartDate())
+        mainLoop: for pop in popPositionArray {
+            if (pop.dateAssigned == today) {
+                for pos in positionArray {
+                    if (pos.positionNum == pop.positionNum) {
+                        self.selectedPosition = pos
+                        break mainLoop
+                    }
+                }
+            }
+        }
+    }
+    
+    func createStartDate() -> Date {
+        let timeTrimmer = 60.0 * 60 * 24
+        let toTrim = Date()
+        
+        var trim = toTrim.timeIntervalSince1970
+        trim = trim - (trim.truncatingRemainder(dividingBy: timeTrimmer))
+        
+        let startDate = Date(timeIntervalSince1970: trim)
+        
+        return startDate
+    }
+    
+    func trimTime(toBeTrimmed: Date) -> Date {
+        let timeTrimmer = 60.0 * 60 * 24
+        
+        var trim = toBeTrimmed.timeIntervalSince1970
+        
+        trim = trim - (trim.truncatingRemainder(dividingBy: timeTrimmer))
+        
+        let trimmed = Date(timeIntervalSince1970: trim)
+        
+        return trimmed
+    }
     
     var body: some View {
         ZStack {
@@ -19,7 +60,8 @@ struct WelcomeView: View {
                 Spacer()
                 Image("dsp").resizable().frame(width:312.0,height:312.0).shadow(radius: 10)
                 Button(action: {withAnimation {
-                    self.currView = "dsp"
+                    self.setInitialPosition()
+                    self.currView = "position"
                     }}) {
                         Text("Let's Get It On")
                             .font(.title)

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08830E462457811400F58EB1 /* PositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08830E452457811400F58EB1 /* PositionView.swift */; };
 		11E2F06B3011689C0495617D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E2F41F2143632C448CC1A8 /* SplashView.swift */; };
 		11E2F90C18F46C4321F6672F /* DSPBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E2F499FB12544E870175B9 /* DSPBanner.swift */; };
 		11E2F9CA31D06A40BA1A2ADE /* DescriptionBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E2FE89A3EEB81BA02AB5E5 /* DescriptionBanner.swift */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08830E452457811400F58EB1 /* PositionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionView.swift; sourceTree = "<group>"; };
 		11E2F41F2143632C448CC1A8 /* SplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		11E2F499FB12544E870175B9 /* DSPBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSPBanner.swift; sourceTree = "<group>"; };
 		11E2FE89A3EEB81BA02AB5E5 /* DescriptionBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionBanner.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				92348A0E242E8E3E0079FDEA /* ContentView.swift */,
 				5569181B242F881400F1C2F3 /* WelcomeView.swift */,
 				11E2F41F2143632C448CC1A8 /* SplashView.swift */,
+				08830E452457811400F58EB1 /* PositionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				55E0D0AA243664A000F5111F /* RKViewController.swift in Sources */,
 				55E0D0A7243664A000F5111F /* RKDate.swift in Sources */,
 				11E2F90C18F46C4321F6672F /* DSPBanner.swift in Sources */,
+				08830E462457811400F58EB1 /* PositionView.swift in Sources */,
 				927216AD243B772A00E0A909 /* RKWeeklyPage.swift in Sources */,
 				11E2F9CA31D06A40BA1A2ADE /* DescriptionBanner.swift in Sources */,
 			);

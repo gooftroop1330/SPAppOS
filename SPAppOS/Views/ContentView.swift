@@ -11,22 +11,13 @@ import SwiftUI
 struct ContentView: View {
     
     @State var currView = "splash"
-    @State var positionsArray: [Position] = []
+    @State var positionArray: [Position] = []
     @State var popPositionArray: [PositionDates] = []
+    @State var selectedPosition: Position?
     
     
     
-    func createStartDate() -> Date {
-        let timeTrimmer = 60.0 * 60 * 24
-        let toTrim = Date()
-        
-        var trim = toTrim.timeIntervalSince1970
-        trim = trim - (trim.truncatingRemainder(dividingBy: timeTrimmer))
-        
-        let startDate = Date(timeIntervalSince1970: trim)
-        
-        return startDate
-    }
+    
     
     func trimTime(toBeTrimmed: Date) -> Date {
         let timeTrimmer = 60.0 * 60 * 24
@@ -59,7 +50,6 @@ struct ContentView: View {
 //    }
     
     @State var selectedDate = Date()
-    @State var selectedPosition: Position?
     @State var selectedPosInfo = [String]()
     @State var singleIsPresented = false
     
@@ -84,9 +74,11 @@ struct ContentView: View {
     var body: some View {
         VStack() {
             if (self.currView == "splash") {
-                SplashView(currView: self.$currView, positionArray: self.$positionsArray, popPositionArray: self.$popPositionArray)
+                SplashView(currView: self.$currView, positionArray: self.$positionArray, popPositionArray: self.$popPositionArray)
             } else if (self.currView == "welcome") {
-                WelcomeView(currView: self.$currView)
+                WelcomeView(currView: self.$currView, selectedPosition: self.$selectedPosition, positionArray: self.$positionArray, popPositionArray: self.$popPositionArray)
+            } else if (self.currView == "position") {
+                PositionView(currView: self.$currView, selectedPosition: self.$selectedPosition, positionArray: self.$positionArray, popPositionArray: self.$popPositionArray)
             }
         }
     }
