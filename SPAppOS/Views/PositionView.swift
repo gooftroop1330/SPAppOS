@@ -10,6 +10,8 @@ import SwiftUI
 
 struct PositionView: View {
     
+    @Environment(\.managedObjectContext) var moc
+    
     @Binding var currView: String
     @Binding var selectedPosition: Position?
     @Binding var positionArray: [Position]
@@ -54,10 +56,14 @@ struct PositionView: View {
     
     func dislike() {
         print("disliked")
+        self.selectedPosition!.like = -1
+        try? self.moc.save()
     }
     
     func like() {
         print("liked")
+        self.selectedPosition!.like = 1
+        try? self.moc.save()
     }
     
     var body: some View {
@@ -86,7 +92,9 @@ struct PositionView: View {
                     .sheet(isPresented: self.$calIsPresented, content: {
                         RKViewController(isPresented: self.$calIsPresented, rkManager: self.rkm)
                             .onDisappear(){
-                                self.selectedDate = self.trimTime(toBeTrimmed: self.rkm.selectedDate)
+                                if (self.rkm.selectedDate != nil) {
+                                    self.selectedDate = self.trimTime(toBeTrimmed: self.rkm.selectedDate)
+                                }
                                 self.setPosition(date: self.selectedDate!)
                         }})
                 }
@@ -107,6 +115,8 @@ struct PositionView: View {
                     Button(action: self.dislike) {
                         Text("Dislike")
                     }
+                    Spacer()
+                    Text("Status: " + self.selectedPosition!.like.description).foregroundColor(Color.black)
                     Spacer()
                     Button(action: self.like) {
                         Text("Like")
