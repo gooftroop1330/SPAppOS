@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08AAADF724574ED7007A9606 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AAADF624574ED7007A9606 /* Session.swift */; };
 		11E2F06B3011689C0495617D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E2F41F2143632C448CC1A8 /* SplashView.swift */; };
 		11E2F90C18F46C4321F6672F /* DSPBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E2F499FB12544E870175B9 /* DSPBanner.swift */; };
 		11E2F9CA31D06A40BA1A2ADE /* DescriptionBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E2FE89A3EEB81BA02AB5E5 /* DescriptionBanner.swift */; };
@@ -59,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08AAADF624574ED7007A9606 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		11E2F41F2143632C448CC1A8 /* SplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		11E2F499FB12544E870175B9 /* DSPBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSPBanner.swift; sourceTree = "<group>"; };
 		11E2FE89A3EEB81BA02AB5E5 /* DescriptionBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionBanner.swift; sourceTree = "<group>"; };
@@ -163,6 +165,24 @@
 			path = AdBanners;
 			sourceTree = "<group>";
 		};
+		08AAADF4245744BA007A9606 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				92348A0E242E8E3E0079FDEA /* ContentView.swift */,
+				5569181B242F881400F1C2F3 /* WelcomeView.swift */,
+				11E2F41F2143632C448CC1A8 /* SplashView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		08AAADF524574EC4007A9606 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				08AAADF624574ED7007A9606 /* Session.swift */,
+			);
+			path = Session;
+			sourceTree = "<group>";
+		};
 		1A57FB3379704065F0DB86D7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,19 +231,18 @@
 		92348A06242E8E3E0079FDEA /* SPAppOS */ = {
 			isa = PBXGroup;
 			children = (
+				08AAADF524574EC4007A9606 /* Session */,
+				08AAADF4245744BA007A9606 /* Views */,
 				08AAADF1245743E1007A9606 /* AdBanners */,
 				08AAADF0245743B9007A9606 /* CalendarShit */,
 				925F3392242F91BE00986D19 /* rescraped.csv */,
 				92348A07242E8E3E0079FDEA /* AppDelegate.swift */,
 				92348A09242E8E3E0079FDEA /* SceneDelegate.swift */,
-				92348A0E242E8E3E0079FDEA /* ContentView.swift */,
 				92348A10242E8E430079FDEA /* Assets.xcassets */,
 				92348A15242E8E440079FDEA /* LaunchScreen.storyboard */,
 				92348A18242E8E440079FDEA /* Info.plist */,
 				92348A0B242E8E3E0079FDEA /* SPAppOS.xcdatamodeld */,
 				92348A12242E8E440079FDEA /* Preview Content */,
-				5569181B242F881400F1C2F3 /* WelcomeView.swift */,
-				11E2F41F2143632C448CC1A8 /* SplashView.swift */,
 				92EAF9B9243315AC00527A5B /* SeededRandomNumGen.swift */,
 			);
 			path = SPAppOS;
@@ -515,6 +534,7 @@
 				55E0D0AC243664A000F5111F /* RKManager.swift in Sources */,
 				55E0D0AA243664A000F5111F /* RKViewController.swift in Sources */,
 				55E0D0A7243664A000F5111F /* RKDate.swift in Sources */,
+				08AAADF724574ED7007A9606 /* Session.swift in Sources */,
 				11E2F90C18F46C4321F6672F /* DSPBanner.swift in Sources */,
 				927216AD243B772A00E0A909 /* RKWeeklyPage.swift in Sources */,
 				11E2F9CA31D06A40BA1A2ADE /* DescriptionBanner.swift in Sources */,

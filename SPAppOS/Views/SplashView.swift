@@ -4,9 +4,13 @@
 //
 
 import SwiftUI
+import NVActivityIndicatorView
 
 struct SplashView: View {
     
+    
+    
     var body: some View {
+        Text("Loading...").foregroundColor(Color.pink)
     }
 }

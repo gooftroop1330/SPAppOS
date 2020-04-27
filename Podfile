@@ -6,6 +6,7 @@ target 'SPAppOS' do
   use_frameworks!
 
   # Pods for SPAppOS
+  pod 'NVActivityIndicatorView/AppExtension'
   pod 'Google-Mobile-Ads-SDK'
   target 'SPAppOSTests' do
     inherit! :search_paths
