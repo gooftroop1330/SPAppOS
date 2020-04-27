@@ -250,7 +250,7 @@ struct SplashView: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(){
             Text("Loading...").foregroundColor(Color.black).onAppear(perform: {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5.3) {
                     //DELETE THIS LINE BEFORE DEPLOYING

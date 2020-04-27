@@ -11,6 +11,7 @@ import SwiftUI
 struct WelcomeView: View {
     @Binding var currView: String
     @Binding var selectedPosition: Position?
+    @Binding var selectedDate: Date?
     @Binding var positionArray: [Position]
     @Binding var popPositionArray: [PositionDates]
     
@@ -21,6 +22,7 @@ struct WelcomeView: View {
                 for pos in positionArray {
                     if (pos.positionNum == pop.positionNum) {
                         self.selectedPosition = pos
+                        self.selectedDate = today
                         break mainLoop
                     }
                 }
@@ -53,25 +55,22 @@ struct WelcomeView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color.black.edgesIgnoringSafeArea(.all)
-            VStack {
-                WelcomeBanner()
-                Spacer()
-                Image("dsp").resizable().frame(width:312.0,height:312.0).shadow(radius: 10)
-                Button(action: {withAnimation {
-                    self.setInitialPosition()
-                    self.currView = "position"
-                    }}) {
-                        Text("Let's Get It On")
-                            .font(.title)
-                            .fontWeight(.thin)
-                            .foregroundColor(Color(red: 237/255, green: 119/255, blue: 229/255))
-                            .multilineTextAlignment(.center)
-                            .frame(width: 200.0, height: 50.0)
-                    }
-                Spacer()
-            }
+        VStack() {
+            WelcomeBanner()
+            Spacer()
+            Image("dsp").resizable().frame(width:312.0,height:312.0).shadow(radius: 10)
+            Button(action: {withAnimation {
+                self.setInitialPosition()
+                self.currView = "position"
+                }}) {
+                    Text("Let's Get It On")
+                        .font(.title)
+                        .fontWeight(.thin)
+                        .foregroundColor(Color(red: 237/255, green: 119/255, blue: 229/255))
+                        .multilineTextAlignment(.center)
+                        .frame(width: 200.0, height: 50.0)
+                }
+            Spacer()
         }
     }
 }
