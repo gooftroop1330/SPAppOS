@@ -263,6 +263,7 @@ struct ContentView: View {
                 for position in positions {
                     if (posDate.positionNum == position.positionNum) {
                         currPos = position
+                        self.selectedPosition = position
                     }
                 }
             }
@@ -273,6 +274,7 @@ struct ContentView: View {
     @State var showSplash = true
     @State var currView = "splash"
     @State var selectedDate = Date()
+    @State var selectedPosition: Position?
     @State var selectedPosInfo = [String]()
     @State var singleIsPresented = false
     
@@ -284,6 +286,14 @@ struct ContentView: View {
         let thirdStep = secondStep[2].description.split(separator: "\"", maxSplits: 1, omittingEmptySubsequences: false)
         let final = secondStep[1].description + "-" + thirdStep[0].description + "-" + secondStep[0].description.suffix(4)
         return final
+    }
+    
+    func dislike() {
+        print("disliked")
+    }
+    
+    func like() {
+        print("liked")
     }
     
     var body: some View {
@@ -352,6 +362,16 @@ struct ContentView: View {
                             .foregroundColor(Color.white)
                             .padding(5)
                         Spacer()
+                    }
+                    VStack() {
+                        HStack() {
+                            Button(action: dislike) {
+                                Text("Dislike")
+                            }
+                            Button(action: like) {
+                                Text("Like")
+                            }
+                        }
                     }
                 }
             }
