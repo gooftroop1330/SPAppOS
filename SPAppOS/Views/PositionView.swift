@@ -18,6 +18,9 @@ struct PositionView: View {
     @Binding var popPositionArray: [PositionDates]
     @Binding var selectedDate: Date?
     @State var calIsPresented = false
+    @State var likeSelected: Bool = false
+    @State var dislikeSelected: Bool = false
+    @State var ourPink: Color = Color(red: 237/255, green: 119/255, blue: 229/255)
     
     var rkm = RKManager(calendar: Calendar.current, minimumDate: Date(timeIntervalSinceReferenceDate: 599529600).addingTimeInterval(60*60*24), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
     
@@ -47,6 +50,11 @@ struct PositionView: View {
                 for pos in positionArray {
                     if (pos.positionNum == pop.positionNum) {
                         self.selectedPosition = pos
+                        if (pos.like == -1) {
+                            self.dislikeSelected = true
+                        } else if (pos.like == 1) {
+                            self.likeSelected = true
+                        }
                         break mainLoop
                     }
                 }
@@ -55,14 +63,27 @@ struct PositionView: View {
     }
     
     func dislike() {
-        print("disliked")
-        self.selectedPosition!.like = -1
+        if (self.selectedPosition!.like != -1){
+            self.selectedPosition!.like = -1
+            self.dislikeSelected = true
+        } else {
+            self.selectedPosition!.like = 0
+            self.dislikeSelected = false
+        }
+        self.likeSelected = false
         try? self.moc.save()
     }
     
+    
     func like() {
-        print("liked")
-        self.selectedPosition!.like = 1
+        if (self.selectedPosition!.like != 1){
+            self.selectedPosition!.like = 1
+            self.likeSelected = true
+        } else {
+            self.selectedPosition!.like = 0
+            self.likeSelected = false
+        }
+        self.dislikeSelected = false
         try? self.moc.save()
     }
     
@@ -84,7 +105,7 @@ struct PositionView: View {
                     }) {
                         Image("calendar-icon")
                             .resizable().frame(width: 30.0, height: 30.0)
-                            .foregroundColor(Color(red: 237/255, green: 119/255, blue: 229/255))
+                            .foregroundColor(self.ourPink)
                             .padding(.trailing, 10)
                     }
                     .padding()
@@ -113,14 +134,12 @@ struct PositionView: View {
             Group() {
                 HStack() {
                     Button(action: self.dislike) {
-                        Text("Dislike")
-                    }
-                    Spacer()
-                    Text("Status: " + self.selectedPosition!.like.description).foregroundColor(Color.white)
+                        Text("Dislike").padding().foregroundColor(Color.white)
+                    }.background(Capsule().fill(self.dislikeSelected ? self.ourPink : Color.black).foregroundColor(self.ourPink).overlay(Capsule().stroke(lineWidth: 2).foregroundColor(self.ourPink)))
                     Spacer()
                     Button(action: self.like) {
-                        Text("Like")
-                    }
+                        Text("Like").padding().foregroundColor(Color.white)
+                    }.background(Capsule().fill(self.likeSelected ? self.ourPink : Color.black).foregroundColor(self.ourPink).overlay(Capsule().stroke(lineWidth: 2).foregroundColor(self.ourPink)))
                 }.padding(15)
             }
         }
