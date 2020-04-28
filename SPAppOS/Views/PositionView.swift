@@ -95,12 +95,12 @@ struct PositionView: View {
     var body: some View {
         Group() {
             VStack() {
-                DSPBanner().padding(.bottom, 50)
+                DSPBanner().padding(.bottom, 10)
                 HStack() {
                     Text(prepDate(toBePrepped: self.selectedDate!))
                         .foregroundColor(Color.primary)
                         .bold()
-                        .font(.system(size: 30.0))
+                        .font(.system(size: UIScreen.main.bounds.width * 0.05))
                         .padding(.leading, 10)
                     Spacer()
                     Button(action: {
@@ -109,7 +109,7 @@ struct PositionView: View {
 
                     }) {
                         Image("calendar-icon")
-                            .resizable().frame(width: 30.0, height: 30.0)
+                            .resizable().frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.width * 0.06)
                             .foregroundColor(Color.primary)
                             .padding(.trailing, 10)
                     }
@@ -126,28 +126,40 @@ struct PositionView: View {
                 Spacer()
                 Text(self.selectedPosition!.positionName!.capitalized)
                     .foregroundColor(Color.primary)
-                    .font(.system(size: 30))
+                    .font(.system(size: UIScreen.main.bounds.width * 0.05))
                 Spacer()
-                Image(self.selectedPosition!.positionImage!).resizable().frame(width: 350.0, height: 200.0)
+                Image(self.selectedPosition!.positionImage!).resizable().frame(width: UIScreen.main.bounds.width * 0.76, height: UIScreen.main.bounds.width * 0.4275)
                 Spacer()
                 ScrollView {
                     Text(self.selectedPosition!.positionDescription!)
                         .foregroundColor(Color.primary)
+                        .font(.system(size: UIScreen.main.bounds.width * 0.0375))
                         .padding(5)
                 }.padding(15)
             }
             Group() {
                 HStack() {
                     Button(action: self.dislike) {
-                        Text("Dislike").padding().foregroundColor(Color.primary)
+                        Image("dislike").resizable()
+                            .frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.width * 0.06)
+                            .foregroundColor(Color.primary)
+                            .padding()
+                        
                         }.frame(minWidth: 0, maxWidth: .infinity)
                         .background(Capsule().fill(self.dislikeSelected ? Color("ourPink") : Color("bg")).foregroundColor(Color("ourPink")).overlay(Capsule().stroke(lineWidth: 2).foregroundColor(Color("ourPink"))))
                     Spacer()
                     Button(action: self.like) {
-                        Text("Like").padding().foregroundColor(Color.primary)
+                        Image("like").resizable()
+                            .frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.width * 0.06)
+                            .foregroundColor(Color.primary)
+                            .padding()
+                        
                     }.frame(minWidth: 0, maxWidth: .infinity)
                     .background(Capsule().fill(self.likeSelected ? Color("ourPink") : Color("bg")).foregroundColor(Color("ourPink")).overlay(Capsule().stroke(lineWidth: 2).foregroundColor(Color("ourPink"))))
                 }.padding(15)
+            }
+            VStack{
+                DescriptionBanner().padding([.top,.bottom], 10)
             }
         }
     }

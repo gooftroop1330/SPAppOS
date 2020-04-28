@@ -251,8 +251,8 @@ struct SplashView: View {
     
     var body: some View {
         VStack(){
-            Text("Loading...").foregroundColor(Color.primary).onAppear(perform: {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5.3) {
+            ActivityIndicator().frame(width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.width * 0.5).foregroundColor(Color("ourPink")).onAppear(perform: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
                     //DELETE THIS LINE BEFORE DEPLOYING
                     self.deleteCoreStuff()
                     if (self.positions.count == 0) {
@@ -269,3 +269,4 @@ struct SplashView: View {
         }
     }
 }
+

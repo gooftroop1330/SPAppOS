@@ -18,7 +18,7 @@ import UIKit
 final private class BannerVC: UIViewControllerRepresentable  {
 
     func makeUIViewController(context: Context) -> UIViewController {
-        let view = GADBannerView(adSize: kGADAdSizeLargeBanner)
+        let view = GADBannerView(adSize: kGADAdSizeBanner)
         let bannerID = "ca-app-pub-3940256099942544/2934735716" // Production "ca-app-pub-6460192778031720/5800162724"
 
         let viewController = UIViewController()

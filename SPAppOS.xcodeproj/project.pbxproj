@@ -13,6 +13,7 @@
 		11E2F9CA31D06A40BA1A2ADE /* DescriptionBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E2FE89A3EEB81BA02AB5E5 /* DescriptionBanner.swift */; };
 		137FC7A4316D4293DE960BFD /* Pods_SPAppOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EFA4DFF4EFF221E259F55DC /* Pods_SPAppOS.framework */; };
 		5569181C242F881400F1C2F3 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5569181B242F881400F1C2F3 /* WelcomeView.swift */; };
+		55B77A952458C7EF00FD6AB8 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B77A942458C7EF00FD6AB8 /* ActivityIndicator.swift */; };
 		55E0D0A6243664A000F5111F /* RKCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E0D09F2436649E00F5111F /* RKCell.swift */; };
 		55E0D0A7243664A000F5111F /* RKDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E0D0A02436649E00F5111F /* RKDate.swift */; };
 		55E0D0A8243664A000F5111F /* RKColorSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E0D0A12436649E00F5111F /* RKColorSettings.swift */; };
@@ -67,6 +68,7 @@
 		3EFA4DFF4EFF221E259F55DC /* Pods_SPAppOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SPAppOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DFFA5AA1C353031DEE08371 /* Pods_SPAppOS_SPAppOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SPAppOS_SPAppOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5569181B242F881400F1C2F3 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		55B77A942458C7EF00FD6AB8 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		55E0D09F2436649E00F5111F /* RKCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKCell.swift; sourceTree = "<group>"; };
 		55E0D0A02436649E00F5111F /* RKDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKDate.swift; sourceTree = "<group>"; };
 		55E0D0A12436649E00F5111F /* RKColorSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKColorSettings.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				5569181B242F881400F1C2F3 /* WelcomeView.swift */,
 				11E2F41F2143632C448CC1A8 /* SplashView.swift */,
 				08830E452457811400F58EB1 /* PositionView.swift */,
+				55B77A942458C7EF00FD6AB8 /* ActivityIndicator.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				927216AC243B772A00E0A909 /* RKPage.swift in Sources */,
 				5569181C242F881400F1C2F3 /* WelcomeView.swift in Sources */,
 				92348A0D242E8E3E0079FDEA /* SPAppOS.xcdatamodeld in Sources */,
+				55B77A952458C7EF00FD6AB8 /* ActivityIndicator.swift in Sources */,
 				55E0D0AE243665B200F5111F /* WelcomeBanner.swift in Sources */,
 				55E0D0A9243664A000F5111F /* RKMonth.swift in Sources */,
 				55E0D0A6243664A000F5111F /* RKCell.swift in Sources */,
@@ -693,14 +697,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SPAppOS/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = FQEH5DLM44;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SPAppOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = PJHDevs.SPAppOS;
+				PRODUCT_BUNDLE_IDENTIFIER = JohnCHarrison.SPAppOS;
 				PRODUCT_NAME = "Daily Sex Positions";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -714,14 +718,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SPAppOS/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = FQEH5DLM44;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SPAppOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = PJHDevs.SPAppOS;
+				PRODUCT_BUNDLE_IDENTIFIER = JohnCHarrison.SPAppOS;
 				PRODUCT_NAME = "Daily Sex Positions";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

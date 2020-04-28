@@ -58,7 +58,7 @@ struct WelcomeView: View {
         VStack() {
             WelcomeBanner()
             Spacer()
-            Image("dsp").resizable().frame(width:312.0,height:312.0).shadow(radius: 10)
+            Image("dsp").resizable().frame(width:UIScreen.main.bounds.width * 0.7,height: UIScreen.main.bounds.width * 0.7).shadow(radius: 10)
             Button(action: {withAnimation {
                 self.setInitialPosition()
                 self.currView = "position"
@@ -68,7 +68,7 @@ struct WelcomeView: View {
                         .fontWeight(.thin)
                         .foregroundColor(Color("ourPink"))
                         .multilineTextAlignment(.center)
-                        .frame(width: 200.0, height: 50.0)
+                        .frame(width: UIScreen.main.bounds.width - 75, height: 50.0)
                         .padding()
             }.background(Capsule().stroke(lineWidth: 2).foregroundColor(Color("ourPink")))
             Spacer()
