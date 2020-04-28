@@ -20,7 +20,7 @@ struct PositionView: View {
     @State var calIsPresented = false
     @State var likeSelected: Bool = false
     @State var dislikeSelected: Bool = false
-    @State var ourPink: Color = Color(red: 237/255, green: 119/255, blue: 229/255)
+    
     
     var rkm = RKManager(calendar: Calendar.current, minimumDate: Date(timeIntervalSinceReferenceDate: 599529600).addingTimeInterval(60*60*24), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
     
@@ -98,7 +98,7 @@ struct PositionView: View {
                 DSPBanner().padding(.bottom, 50)
                 HStack() {
                     Text(prepDate(toBePrepped: self.selectedDate!))
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color.primary)
                         .bold()
                         .font(.system(size: 30.0))
                         .padding(.leading, 10)
@@ -110,7 +110,7 @@ struct PositionView: View {
                     }) {
                         Image("calendar-icon")
                             .resizable().frame(width: 30.0, height: 30.0)
-                            .foregroundColor(self.ourPink)
+                            .foregroundColor(Color("ourPink"))
                             .padding(.trailing, 10)
                     }
                     .padding()
@@ -125,26 +125,26 @@ struct PositionView: View {
                 }
                 Spacer()
                 Text(self.selectedPosition!.positionName!.capitalized)
-                    .foregroundColor(Color.white)
+                    .foregroundColor(Color.primary)
                     .font(.system(size: 30))
                 Spacer()
                 Image(self.selectedPosition!.positionImage!).resizable().frame(width: 350.0, height: 200.0)
                 Spacer()
                 ScrollView {
                     Text(self.selectedPosition!.positionDescription!)
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color.primary)
                         .padding(5)
                 }
             }
             Group() {
                 HStack() {
                     Button(action: self.dislike) {
-                        Text("Dislike").padding().foregroundColor(Color.white)
-                    }.background(Capsule().fill(self.dislikeSelected ? self.ourPink : Color.black).foregroundColor(self.ourPink).overlay(Capsule().stroke(lineWidth: 2).foregroundColor(self.ourPink)))
+                        Text("Dislike").padding().foregroundColor(Color.primary)
+                    }.background(Capsule().fill(self.dislikeSelected ? Color("ourPink") : Color("bg")).foregroundColor(Color("ourPink")).overlay(Capsule().stroke(lineWidth: 2).foregroundColor(Color("ourPink")))).frame(width: 100)
                     Spacer()
                     Button(action: self.like) {
-                        Text("Like").padding().foregroundColor(Color.white)
-                    }.background(Capsule().fill(self.likeSelected ? self.ourPink : Color.black).foregroundColor(self.ourPink).overlay(Capsule().stroke(lineWidth: 2).foregroundColor(self.ourPink)))
+                        Text("Like").padding().foregroundColor(Color.primary)
+                    }.background(Capsule().fill(self.likeSelected ? Color("ourPink") : Color("bg")).foregroundColor(Color("ourPink")).overlay(Capsule().stroke(lineWidth: 2).foregroundColor(Color("ourPink")))).frame(width: 100)
                 }.padding(15)
             }
         }

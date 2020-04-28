@@ -18,7 +18,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack() {
-            Color.black.edgesIgnoringSafeArea(.all)
+            Color("bg").edgesIgnoringSafeArea(.all)
             VStack() {
                 if (self.currView == "splash") {
                     SplashView(currView: self.$currView, positionArray: self.$positionArray, popPositionArray: self.$popPositionArray)
