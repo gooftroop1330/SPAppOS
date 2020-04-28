@@ -52,8 +52,13 @@ struct PositionView: View {
                         self.selectedPosition = pos
                         if (pos.like == -1) {
                             self.dislikeSelected = true
+                            self.likeSelected = false
                         } else if (pos.like == 1) {
                             self.likeSelected = true
+                            self.dislikeSelected = false
+                        } else {
+                            self.likeSelected = false
+                            self.dislikeSelected = false
                         }
                         break mainLoop
                     }
