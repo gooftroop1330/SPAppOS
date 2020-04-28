@@ -66,7 +66,7 @@ struct WelcomeView: View {
                     Text("Let's Get It On")
                         .font(.title)
                         .fontWeight(.thin)
-                        .foregroundColor(Color(red: 237/255, green: 119/255, blue: 229/255))
+                        .foregroundColor(Color("ourPink"))
                         .multilineTextAlignment(.center)
                         .frame(width: 200.0, height: 50.0)
                         .padding()

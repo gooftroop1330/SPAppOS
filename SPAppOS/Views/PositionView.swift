@@ -110,7 +110,7 @@ struct PositionView: View {
                     }) {
                         Image("calendar-icon")
                             .resizable().frame(width: 30.0, height: 30.0)
-                            .foregroundColor(Color("ourPink"))
+                            .foregroundColor(Color.primary)
                             .padding(.trailing, 10)
                     }
                     .padding()
@@ -134,17 +134,19 @@ struct PositionView: View {
                     Text(self.selectedPosition!.positionDescription!)
                         .foregroundColor(Color.primary)
                         .padding(5)
-                }
+                }.padding(15)
             }
             Group() {
                 HStack() {
                     Button(action: self.dislike) {
                         Text("Dislike").padding().foregroundColor(Color.primary)
-                    }.background(Capsule().fill(self.dislikeSelected ? Color("ourPink") : Color("bg")).foregroundColor(Color("ourPink")).overlay(Capsule().stroke(lineWidth: 2).foregroundColor(Color("ourPink")))).frame(width: 100)
+                        }.frame(minWidth: 0, maxWidth: .infinity)
+                        .background(Capsule().fill(self.dislikeSelected ? Color("ourPink") : Color("bg")).foregroundColor(Color("ourPink")).overlay(Capsule().stroke(lineWidth: 2).foregroundColor(Color("ourPink"))))
                     Spacer()
                     Button(action: self.like) {
                         Text("Like").padding().foregroundColor(Color.primary)
-                    }.background(Capsule().fill(self.likeSelected ? Color("ourPink") : Color("bg")).foregroundColor(Color("ourPink")).overlay(Capsule().stroke(lineWidth: 2).foregroundColor(Color("ourPink")))).frame(width: 100)
+                    }.frame(minWidth: 0, maxWidth: .infinity)
+                    .background(Capsule().fill(self.likeSelected ? Color("ourPink") : Color("bg")).foregroundColor(Color("ourPink")).overlay(Capsule().stroke(lineWidth: 2).foregroundColor(Color("ourPink"))))
                 }.padding(15)
             }
         }

@@ -1,17 +1,87 @@
 {
   "images" : [
     {
-      "filename" : "dsp.png",
+      "filename" : "FYEDevelopment(1)-3.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "dsp-1.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "FYEDevelopment(1).png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "FYEDevelopment(2).png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "FYEDevelopment(1)-4.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "dsp-2.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "FYEDevelopment(1)-1.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "FYEDevelopment(2)-1.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "FYEDevelopment(1)-5.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "FYEDevelopment(1)-2.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "FYEDevelopment(2)-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

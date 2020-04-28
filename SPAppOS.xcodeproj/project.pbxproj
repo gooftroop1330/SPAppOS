@@ -80,7 +80,7 @@
 		6A46E221E9CD1C4E31500CBD /* Pods-SPAppOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPAppOSTests.debug.xcconfig"; path = "Target Support Files/Pods-SPAppOSTests/Pods-SPAppOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		814D962AF437F221A7F3B013 /* Pods-SPAppOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPAppOS.release.xcconfig"; path = "Target Support Files/Pods-SPAppOS/Pods-SPAppOS.release.xcconfig"; sourceTree = "<group>"; };
 		90A56EC90EC0151E9835FD39 /* Pods-SPAppOS-SPAppOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPAppOS-SPAppOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-SPAppOS-SPAppOSUITests/Pods-SPAppOS-SPAppOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		92348A04242E8E3E0079FDEA /* SPAppOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPAppOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		92348A04242E8E3E0079FDEA /* Daily Sex Positions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Daily Sex Positions.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		92348A07242E8E3E0079FDEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92348A09242E8E3E0079FDEA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		92348A0C242E8E3E0079FDEA /* SPAppOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SPAppOS.xcdatamodel; sourceTree = "<group>"; };
@@ -212,7 +212,7 @@
 		92348A05242E8E3E0079FDEA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				92348A04242E8E3E0079FDEA /* SPAppOS.app */,
+				92348A04242E8E3E0079FDEA /* Daily Sex Positions.app */,
 				92348A1D242E8E440079FDEA /* SPAppOSTests.xctest */,
 				92348A28242E8E440079FDEA /* SPAppOSUITests.xctest */,
 			);
@@ -282,7 +282,7 @@
 			);
 			name = SPAppOS;
 			productName = SPAppOS;
-			productReference = 92348A04242E8E3E0079FDEA /* SPAppOS.app */;
+			productReference = 92348A04242E8E3E0079FDEA /* Daily Sex Positions.app */;
 			productType = "com.apple.product-type.application";
 		};
 		92348A1C242E8E440079FDEA /* SPAppOSTests */ = {
@@ -701,7 +701,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = PJHDevs.SPAppOS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Daily Sex Positions";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -722,7 +722,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = PJHDevs.SPAppOS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Daily Sex Positions";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
