@@ -252,7 +252,7 @@ struct SplashView: View {
     var body: some View {
         VStack(){
             ActivityIndicator().frame(width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.width * 0.5).foregroundColor(Color("ourPink")).onAppear(perform: {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     //DELETE THIS LINE BEFORE DEPLOYING
                     self.deleteCoreStuff()
                     if (self.positions.count == 0) {
@@ -266,6 +266,8 @@ struct SplashView: View {
                     self.currView = "welcome"
                 }
             })
+            Text("Loading").foregroundColor(Color.primary).fontWeight(.thin).font(.system(size: UIScreen.main.bounds.width * 0.07))
+            
         }
     }
 }
