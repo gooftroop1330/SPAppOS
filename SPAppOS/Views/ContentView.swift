@@ -17,13 +17,16 @@ struct ContentView: View {
     @State var selectedDate: Date?
     
     var body: some View {
-        VStack() {
-            if (self.currView == "splash") {
-                SplashView(currView: self.$currView, positionArray: self.$positionArray, popPositionArray: self.$popPositionArray)
-            } else if (self.currView == "welcome") {
-                WelcomeView(currView: self.$currView, selectedPosition: self.$selectedPosition, selectedDate: self.$selectedDate, positionArray: self.$positionArray, popPositionArray: self.$popPositionArray)
-            } else if (self.currView == "position") {
-                PositionView(currView: self.$currView, selectedPosition: self.$selectedPosition, positionArray: self.$positionArray, popPositionArray: self.$popPositionArray, selectedDate: self.$selectedDate)
+        ZStack() {
+            Color.black.edgesIgnoringSafeArea(.all)
+            VStack() {
+                if (self.currView == "splash") {
+                    SplashView(currView: self.$currView, positionArray: self.$positionArray, popPositionArray: self.$popPositionArray)
+                } else if (self.currView == "welcome") {
+                    WelcomeView(currView: self.$currView, selectedPosition: self.$selectedPosition, selectedDate: self.$selectedDate, positionArray: self.$positionArray, popPositionArray: self.$popPositionArray)
+                } else if (self.currView == "position") {
+                    PositionView(currView: self.$currView, selectedPosition: self.$selectedPosition, positionArray: self.$positionArray, popPositionArray: self.$popPositionArray, selectedDate: self.$selectedDate)
+                }
             }
         }
     }

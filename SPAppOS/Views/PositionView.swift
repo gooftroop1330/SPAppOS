@@ -73,7 +73,7 @@ struct PositionView: View {
                 Spacer()
                 HStack() {
                     Text(prepDate(toBePrepped: self.selectedDate!))
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Color.white)
                         .bold()
                         .font(.system(size: 30.0))
                         .padding(.leading, 10)
@@ -100,13 +100,13 @@ struct PositionView: View {
                 }
                 Spacer()
                 Text(self.selectedPosition!.positionName!.capitalized)
-                    .foregroundColor(Color.black)
+                    .foregroundColor(Color.white)
                     .font(.system(size: 30))
                 Spacer()
                 Image(self.selectedPosition!.positionImage!).resizable().frame(width: 350.0, height: 200.0)
                 Spacer()
                 Text(self.selectedPosition!.positionDescription!)
-                    .foregroundColor(Color.black)
+                    .foregroundColor(Color.white)
                     .padding(5)
                 Spacer()
             }
@@ -116,7 +116,7 @@ struct PositionView: View {
                         Text("Dislike")
                     }
                     Spacer()
-                    Text("Status: " + self.selectedPosition!.like.description).foregroundColor(Color.black)
+                    Text("Status: " + self.selectedPosition!.like.description).foregroundColor(Color.white)
                     Spacer()
                     Button(action: self.like) {
                         Text("Like")
