@@ -69,8 +69,7 @@ struct PositionView: View {
     var body: some View {
         Group() {
             VStack() {
-                DSPBanner()
-                Spacer()
+                DSPBanner().padding(.bottom, 50)
                 HStack() {
                     Text(prepDate(toBePrepped: self.selectedDate!))
                         .foregroundColor(Color.white)
@@ -105,10 +104,11 @@ struct PositionView: View {
                 Spacer()
                 Image(self.selectedPosition!.positionImage!).resizable().frame(width: 350.0, height: 200.0)
                 Spacer()
-                Text(self.selectedPosition!.positionDescription!)
-                    .foregroundColor(Color.white)
-                    .padding(5)
-                Spacer()
+                ScrollView {
+                    Text(self.selectedPosition!.positionDescription!)
+                        .foregroundColor(Color.white)
+                        .padding(5)
+                }
             }
             Group() {
                 HStack() {

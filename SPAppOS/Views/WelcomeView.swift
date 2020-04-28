@@ -69,6 +69,7 @@ struct WelcomeView: View {
                         .foregroundColor(Color(red: 237/255, green: 119/255, blue: 229/255))
                         .multilineTextAlignment(.center)
                         .frame(width: 200.0, height: 50.0)
+                        .padding()
             }.background(Capsule().stroke(lineWidth: 2).foregroundColor(Color(red: 237/255, green: 119/255, blue: 229/255)))
             Spacer()
         }
