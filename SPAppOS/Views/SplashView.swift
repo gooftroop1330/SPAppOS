@@ -7,6 +7,7 @@ import SwiftUI
 
 struct SplashView: View {
     
+    // Fetch Core Data and create MOC
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(entity: Position.entity(), sortDescriptors: []) var positions: FetchedResults<Position>
     @FetchRequest(entity: PositionDates.entity(), sortDescriptors: []) var posDates: FetchedResults<PositionDates>
@@ -26,6 +27,7 @@ struct SplashView: View {
         try? self.moc.save()
     }
     
+    // Self explanatory
     func readDataFromCSV(fileName:String, fileType: String)-> String!{
         guard let filepath = Bundle.main.path(forResource: fileName, ofType: fileType)
             else {
@@ -41,6 +43,7 @@ struct SplashView: View {
         }
     }
     
+    // What it says, it does
     func cleanRows(file:String)->String{
         var cleanFile = file
         cleanFile = cleanFile.replacingOccurrences(of: "\r", with: "\n")
@@ -49,6 +52,7 @@ struct SplashView: View {
         return cleanFile
     }
     
+    // CSV Parsing
     func csv(data: String) -> [[String]] {
         var result: [[String]] = []
         let rows = data.components(separatedBy: "\n")
@@ -61,6 +65,7 @@ struct SplashView: View {
         return result
     }
     
+    // It does what it says
     func randomize(seed: Int) -> [Int] {
         var firstShuffle = [Int]()
         var lastShuffle = [Int]()
@@ -155,6 +160,7 @@ struct SplashView: View {
         
     }
     
+    // Assigns dates and place Position objects in array
     func initialize() {
         
         let data = readDataFromCSV(fileName: "rescraped", fileType: ".csv")

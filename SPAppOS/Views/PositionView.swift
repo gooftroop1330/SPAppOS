@@ -19,7 +19,7 @@ struct PositionView: View {
     @State var calIsPresented = false
     @Binding var likeSelected: Bool
     @Binding var dislikeSelected: Bool
-    
+    @State var dragOffset = CGSize.zero
     
     var rkm = RKManager(calendar: Calendar.current, minimumDate: Date(timeIntervalSinceReferenceDate: 599529600).addingTimeInterval(60*60*24), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
     
@@ -84,9 +84,11 @@ struct PositionView: View {
     
     var body: some View {
         Group() {
-            VStack() {
-                DSPBanner().padding(.bottom, 10)
-                HStack() {
+            VStack {
+                DSPBanner()
+            }.padding(.bottom, 10)
+            VStack {
+                HStack {
                     Text(prepDate(toBePrepped: self.selectedDate!))
                         .foregroundColor(Color.primary)
                         .bold()
@@ -127,7 +129,23 @@ struct PositionView: View {
                         .font(.system(size: UIScreen.main.bounds.width * 0.0375))
                         .padding(5)
                 }.padding(15)
-            }
+                // PROBLEM HERE -- This only advances days so far, but going back would be pretty simple if we can figure this out
+            }.animation(.spring())
+                .offset(x: self.dragOffset.width)
+                .gesture(DragGesture().onChanged{value in
+                    if (value.translation.width > 0){
+                        if (value.translation.width > 100) {
+                            self.selectedDate = self.selectedDate! + TimeInterval(60.0 * 60 * 24)
+                            self.setPosition(date: self.selectedDate!)
+                        }
+                    }
+                    else {
+                        
+                    }
+                    self.dragOffset = value.translation}
+                    .onEnded{value in
+                        self.dragOffset = .zero
+                })
             Group() {
                 HStack() {
                     Button(action: self.dislike) {
