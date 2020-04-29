@@ -131,7 +131,6 @@ struct PositionView: View {
                         .font(.system(size: UIScreen.main.bounds.width * 0.0375))
                         .padding(5)
                 }.padding(15)
-                // PROBLEM HERE -- This only advances days so far, but going back would be pretty simple if we can figure this out
             }.animation(.spring())
                 .offset(x: self.dragOffset.width)
                 .gesture(DragGesture().onChanged{value in
