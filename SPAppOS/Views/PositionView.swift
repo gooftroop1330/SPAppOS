@@ -95,6 +95,7 @@ struct PositionView: View {
                         .foregroundColor(Color.primary)
                         .bold()
                         .font(.system(size: UIScreen.main.bounds.width * 0.05))
+                        .fontWeight(.thin)
                         .padding(.leading, 10)
                     Spacer()
                     Button(action: {
@@ -108,7 +109,7 @@ struct PositionView: View {
                             .foregroundColor(Color.primary)
                             .padding(.trailing, 10)
                     }
-                    .padding()
+                    .padding(.trailing, 10)
                     .sheet(isPresented: self.$calIsPresented, content: {
                         RKViewController(isPresented: self.$calIsPresented, rkManager: self.rkm)
                             .onDisappear(){
@@ -117,30 +118,47 @@ struct PositionView: View {
                                 }
                                 self.setPosition(date: self.selectedDate!)
                         }})
-                }
+                }.padding([.leading, .trailing], 15)
                 Spacer()
                 Text(self.selectedPosition!.positionName!.capitalized)
                     .foregroundColor(Color.primary)
                     .font(.system(size: UIScreen.main.bounds.width * 0.05))
+                    .fontWeight(.thin)
                 Spacer()
-                Image(self.selectedPosition!.positionImage!).resizable().frame(width: UIScreen.main.bounds.width * 0.76, height: UIScreen.main.bounds.width * 0.4275)
+                HStack {
+                    Button(action: self.back){
+                        Image("back").resizable()
+                        .frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.width * 0.06)
+                        .foregroundColor(Color.primary)
+                        .padding()
+                    }
+                    Spacer()
+                    Image(self.selectedPosition!.positionImage!).resizable().frame(width: UIScreen.main.bounds.width * 0.76, height: UIScreen.main.bounds.width * 0.4275)
+                    Spacer()
+                    Button(action: self.forward){
+                        Image("forward").resizable()
+                        .frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.width * 0.06)
+                        .foregroundColor(Color.primary)
+                        .padding()
+                    }
+                }
                 Spacer()
                 ScrollView {
                     Text(self.selectedPosition!.positionDescription!)
                         .foregroundColor(Color.primary)
                         .font(.system(size: UIScreen.main.bounds.width * 0.0375))
-                        .padding(5)
+                        .padding(15)
                 }.padding(15)
                 // PROBLEM HERE -- This only advances days so far, but going back would be pretty simple if we can figure this out
             }.animation(.spring())
                 .offset(x: self.dragOffset.width)
                 .gesture(DragGesture().onChanged{value in
                     if (value.translation.width > 0){
-                        if (value.translation.width > 100) {
+                        if (value.translation.width > 30) {
                             self.rightDrag = true
                         }
                     } else if (value.translation.width < 0) {
-                        if (value.translation.width < -100) {
+                        if (value.translation.width < -30) {
                             self.leftDrag = true
                         }
                     }
@@ -160,6 +178,7 @@ struct PositionView: View {
                 })
             Group() {
                 HStack() {
+                    Spacer()
                     Button(action: self.dislike) {
                         Image("dislike").resizable()
                             .frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.width * 0.06)
@@ -177,11 +196,21 @@ struct PositionView: View {
                         
                     }.frame(minWidth: 0, maxWidth: .infinity)
                     .background(Capsule().fill(self.likeSelected ? Color("ourPink") : Color("bg")).foregroundColor(Color("ourPink")).overlay(Capsule().stroke(lineWidth: 2).foregroundColor(Color("ourPink"))))
+                    Spacer()
                 }.padding(15)
             }
             VStack{
                 DescriptionBanner().padding([.top,.bottom], 10)
             }
         }
+    }
+    
+    func forward() {
+        self.selectedDate = self.selectedDate! + TimeInterval(60.0 * 60 * 24)
+        self.setPosition(date: self.selectedDate!)
+    }
+    func back() {
+        self.selectedDate = self.selectedDate! - TimeInterval(60.0 * 60 * 24)
+        self.setPosition(date: self.selectedDate!)
     }
 }
