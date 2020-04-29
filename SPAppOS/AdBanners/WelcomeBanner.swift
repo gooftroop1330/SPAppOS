@@ -1,5 +1,3 @@
-//
-//  WelcomeBanner.swift
 //  SPAppOS
 //
 //  Created by John C Harrison on 04/2/2020.
