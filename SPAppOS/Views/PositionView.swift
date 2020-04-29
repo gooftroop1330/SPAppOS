@@ -20,6 +20,8 @@ struct PositionView: View {
     @Binding var likeSelected: Bool
     @Binding var dislikeSelected: Bool
     @State var dragOffset = CGSize.zero
+    @State var rightDrag = false
+    @State var leftDrag = false
     
     var rkm = RKManager(calendar: Calendar.current, minimumDate: Date(timeIntervalSinceReferenceDate: 599529600).addingTimeInterval(60*60*24), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
     
@@ -135,15 +137,25 @@ struct PositionView: View {
                 .gesture(DragGesture().onChanged{value in
                     if (value.translation.width > 0){
                         if (value.translation.width > 100) {
-                            self.selectedDate = self.selectedDate! + TimeInterval(60.0 * 60 * 24)
-                            self.setPosition(date: self.selectedDate!)
+                            self.rightDrag = true
+                        }
+                    } else if (value.translation.width < 0) {
+                        if (value.translation.width < -100) {
+                            self.leftDrag = true
                         }
                     }
-                    else {
-                        
-                    }
+                    
                     self.dragOffset = value.translation}
                     .onEnded{value in
+                        if (self.leftDrag) {
+                            self.selectedDate = self.selectedDate! + TimeInterval(60.0 * 60 * 24)
+                            self.setPosition(date: self.selectedDate!)
+                        } else if (self.rightDrag) {
+                            self.selectedDate = self.selectedDate! - TimeInterval(60.0 * 60 * 24)
+                            self.setPosition(date: self.selectedDate!)
+                        }
+                        self.leftDrag = false
+                        self.rightDrag = false
                         self.dragOffset = .zero
                 })
             Group() {
