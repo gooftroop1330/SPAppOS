@@ -15,6 +15,8 @@ struct WelcomeView: View {
     @Binding var positionDictionary: [Date : Position]
     @Binding var likeSelected: Bool
     @Binding var dislikeSelected: Bool
+    @Binding var pastAvailable: Bool
+    @Binding var futureAvailable: Bool
     
     func setInitialPosition() {
         let today = trimTime(toBeTrimmed: createStartDate())
@@ -24,6 +26,11 @@ struct WelcomeView: View {
             self.dislikeSelected = true
         } else if (self.selectedPosition!.like == 1) {
             self.likeSelected = true
+        }
+        if (today == Date(timeIntervalSinceReferenceDate: 599529600).addingTimeInterval(60*60*24)) {
+            self.pastAvailable = false
+        } else if (today == Date(timeIntervalSinceReferenceDate: 599529600).addingTimeInterval(60.0 * 60 * 24 * Double(self.positionDictionary.count - 1))) {
+            self.futureAvailable = false
         }
     }
     

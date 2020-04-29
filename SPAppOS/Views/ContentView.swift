@@ -16,6 +16,8 @@ struct ContentView: View {
     @State var selectedDate: Date?
     @State var likeSelected: Bool = false
     @State var dislikeSelected: Bool = false
+    @State var pastAvailable: Bool = true
+    @State var futureAvailable: Bool = true
     
     
     var body: some View {
@@ -25,9 +27,9 @@ struct ContentView: View {
                 if (self.currView == "splash") {
                     SplashView(currView: self.$currView, positionDictionary: self.$positionDictionary)
                 } else if (self.currView == "welcome") {
-                    WelcomeView(currView: self.$currView, selectedPosition: self.$selectedPosition, selectedDate: self.$selectedDate, positionDictionary: self.$positionDictionary, likeSelected: self.$likeSelected, dislikeSelected: self.$dislikeSelected)
+                    WelcomeView(currView: self.$currView, selectedPosition: self.$selectedPosition, selectedDate: self.$selectedDate, positionDictionary: self.$positionDictionary, likeSelected: self.$likeSelected, dislikeSelected: self.$dislikeSelected, pastAvailable: self.$pastAvailable, futureAvailable: self.$futureAvailable)
                 } else if (self.currView == "position") {
-                    PositionView(currView: self.$currView, selectedPosition: self.$selectedPosition, positionDictionary: self.$positionDictionary, selectedDate: self.$selectedDate, likeSelected: self.$likeSelected, dislikeSelected: self.$dislikeSelected)
+                    PositionView(currView: self.$currView, selectedPosition: self.$selectedPosition, positionDictionary: self.$positionDictionary, selectedDate: self.$selectedDate, likeSelected: self.$likeSelected, dislikeSelected: self.$dislikeSelected, pastAvailable: self.$pastAvailable, futureAvailable: self.$futureAvailable)
                 }
             }
         }

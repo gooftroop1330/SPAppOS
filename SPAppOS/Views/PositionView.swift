@@ -22,6 +22,8 @@ struct PositionView: View {
     @State var dragOffset = CGSize.zero
     @State var rightDrag = false
     @State var leftDrag = false
+    @Binding var pastAvailable: Bool
+    @Binding var futureAvailable: Bool
     
     var rkm = RKManager(calendar: Calendar.current, minimumDate: Date(timeIntervalSinceReferenceDate: 599529600).addingTimeInterval(60*60*24), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
     
@@ -47,6 +49,8 @@ struct PositionView: View {
     
     func setPosition(date: Date) {
         self.selectedPosition = positionDictionary[date]
+        self.pastAvailable = true
+        self.futureAvailable = true
         if (self.selectedPosition!.like == -1) {
             self.dislikeSelected = true
             self.likeSelected = false
@@ -56,6 +60,11 @@ struct PositionView: View {
         } else {
             self.likeSelected = false
             self.dislikeSelected = false
+        }
+        if (date == Date(timeIntervalSinceReferenceDate: 599529600)) {
+            self.pastAvailable = false
+        } else if (date == Date(timeIntervalSinceReferenceDate: 599529600).addingTimeInterval(60.0 * 60 * 24 * Double(self.positionDictionary.count - 1))) {
+            self.futureAvailable = false
         }
     }
     
@@ -126,20 +135,24 @@ struct PositionView: View {
                     .fontWeight(.thin)
                 Spacer()
                 HStack {
-                    Button(action: self.back){
-                        Image("back").resizable()
-                        .frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.width * 0.06)
-                        .foregroundColor(Color.primary)
-                        .padding()
+                    if (self.pastAvailable) {
+                        Button(action: self.back){
+                            Image("back").resizable()
+                            .frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.width * 0.06)
+                            .foregroundColor(Color.primary)
+                            .padding()
+                        }
                     }
                     Spacer()
                     Image(self.selectedPosition!.positionImage!).resizable().frame(width: UIScreen.main.bounds.width * 0.76, height: UIScreen.main.bounds.width * 0.4275)
                     Spacer()
-                    Button(action: self.forward){
-                        Image("forward").resizable()
-                        .frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.width * 0.06)
-                        .foregroundColor(Color.primary)
-                        .padding()
+                    if (self.futureAvailable) {
+                        Button(action: self.forward){
+                            Image("forward").resizable()
+                            .frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.width * 0.06)
+                            .foregroundColor(Color.primary)
+                            .padding()
+                        }
                     }
                 }
                 Spacer()
@@ -165,11 +178,9 @@ struct PositionView: View {
                     self.dragOffset = value.translation}
                     .onEnded{value in
                         if (self.leftDrag) {
-                            self.selectedDate = self.selectedDate! + TimeInterval(60.0 * 60 * 24)
-                            self.setPosition(date: self.selectedDate!)
+                            self.forward()
                         } else if (self.rightDrag) {
-                            self.selectedDate = self.selectedDate! - TimeInterval(60.0 * 60 * 24)
-                            self.setPosition(date: self.selectedDate!)
+                            self.back()
                         }
                         self.leftDrag = false
                         self.rightDrag = false
@@ -205,11 +216,15 @@ struct PositionView: View {
     }
     
     func forward() {
-        self.selectedDate = self.selectedDate! + TimeInterval(60.0 * 60 * 24)
-        self.setPosition(date: self.selectedDate!)
+        if (self.futureAvailable) {
+            self.selectedDate = self.selectedDate! + TimeInterval(60.0 * 60 * 24)
+            self.setPosition(date: self.selectedDate!)
+        }
     }
     func back() {
-        self.selectedDate = self.selectedDate! - TimeInterval(60.0 * 60 * 24)
-        self.setPosition(date: self.selectedDate!)
+        if (self.pastAvailable) {
+            self.selectedDate = self.selectedDate! - TimeInterval(60.0 * 60 * 24)
+            self.setPosition(date: self.selectedDate!)
+        }
     }
 }
