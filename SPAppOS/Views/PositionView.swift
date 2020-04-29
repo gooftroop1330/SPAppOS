@@ -14,12 +14,11 @@ struct PositionView: View {
     
     @Binding var currView: String
     @Binding var selectedPosition: Position?
-    @Binding var positionArray: [Position]
-    @Binding var popPositionArray: [PositionDates]
+    @Binding var positionDictionary: [Date : Position]
     @Binding var selectedDate: Date?
     @State var calIsPresented = false
-    @State var likeSelected: Bool = false
-    @State var dislikeSelected: Bool = false
+    @Binding var likeSelected: Bool
+    @Binding var dislikeSelected: Bool
     
     
     var rkm = RKManager(calendar: Calendar.current, minimumDate: Date(timeIntervalSinceReferenceDate: 599529600).addingTimeInterval(60*60*24), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
@@ -45,25 +44,16 @@ struct PositionView: View {
     }
     
     func setPosition(date: Date) {
-        mainLoop: for pop in popPositionArray {
-            if (pop.dateAssigned == date) {
-                for pos in positionArray {
-                    if (pos.positionNum == pop.positionNum) {
-                        self.selectedPosition = pos
-                        if (pos.like == -1) {
-                            self.dislikeSelected = true
-                            self.likeSelected = false
-                        } else if (pos.like == 1) {
-                            self.likeSelected = true
-                            self.dislikeSelected = false
-                        } else {
-                            self.likeSelected = false
-                            self.dislikeSelected = false
-                        }
-                        break mainLoop
-                    }
-                }
-            }
+        self.selectedPosition = positionDictionary[date]
+        if (self.selectedPosition!.like == -1) {
+            self.dislikeSelected = true
+            self.likeSelected = false
+        } else if (self.selectedPosition!.like == 1) {
+            self.likeSelected = true
+            self.dislikeSelected = false
+        } else {
+            self.likeSelected = false
+            self.dislikeSelected = false
         }
     }
     
@@ -104,7 +94,7 @@ struct PositionView: View {
                         .padding(.leading, 10)
                     Spacer()
                     Button(action: {
-                        self.rkm.maximumDate = self.rkm.minimumDate.addingTimeInterval(60.0 * 60 * 24 * Double(self.popPositionArray.count - 1))
+                        self.rkm.maximumDate = self.rkm.minimumDate.addingTimeInterval(60.0 * 60 * 24 * Double(self.positionDictionary.count - 1))
                         self.calIsPresented.toggle()
 
                     }) {

@@ -12,21 +12,18 @@ struct WelcomeView: View {
     @Binding var currView: String
     @Binding var selectedPosition: Position?
     @Binding var selectedDate: Date?
-    @Binding var positionArray: [Position]
-    @Binding var popPositionArray: [PositionDates]
+    @Binding var positionDictionary: [Date : Position]
+    @Binding var likeSelected: Bool
+    @Binding var dislikeSelected: Bool
     
     func setInitialPosition() {
         let today = trimTime(toBeTrimmed: createStartDate())
-        mainLoop: for pop in popPositionArray {
-            if (pop.dateAssigned == today) {
-                for pos in positionArray {
-                    if (pos.positionNum == pop.positionNum) {
-                        self.selectedPosition = pos
-                        self.selectedDate = today
-                        break mainLoop
-                    }
-                }
-            }
+        self.selectedDate = today
+        self.selectedPosition = self.positionDictionary[today]
+        if (self.selectedPosition!.like == -1) {
+            self.dislikeSelected = true
+        } else if (self.selectedPosition!.like == 1) {
+            self.likeSelected = true
         }
     }
     

@@ -12,8 +12,7 @@ struct SplashView: View {
     @FetchRequest(entity: PositionDates.entity(), sortDescriptors: []) var posDates: FetchedResults<PositionDates>
     
     @Binding var currView: String
-    @Binding var positionArray: [Position]
-    @Binding var popPositionArray: [PositionDates]
+    @Binding var positionDictionary: [Date : Position]
     
     
     //ONLY FOR TESTING PURPOSES - DELETES ALL MOC DATA
@@ -199,6 +198,7 @@ struct SplashView: View {
                 return true
             }
         }
+        
         return false
     }
     
@@ -219,11 +219,13 @@ struct SplashView: View {
     
     //Loads Position data into State variables
     func loadData() {
-        for pos in positions {
-            positionArray.append(pos)
-        }
         for posDate in posDates {
-            popPositionArray.append(posDate)
+            innerLoop: for pos in positions {
+                if (posDate.positionNum == pos.positionNum) {
+                    self.positionDictionary[posDate.dateAssigned!] = pos
+                    break innerLoop
+                }
+            }
         }
     }
     
@@ -254,7 +256,7 @@ struct SplashView: View {
             ActivityIndicator().frame(width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.width * 0.5).foregroundColor(Color("ourPink")).onAppear(perform: {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     //DELETE THIS LINE BEFORE DEPLOYING
-                    self.deleteCoreStuff()
+                    //self.deleteCoreStuff()
                     if (self.positions.count == 0) {
                         self.initialize()
                     } else if (!self.checkDateFound()) {
