@@ -95,6 +95,7 @@ struct PositionView: View {
                     Spacer()
                     Button(action: {
                         self.rkm.maximumDate = self.rkm.minimumDate.addingTimeInterval(60.0 * 60 * 24 * Double(self.positionDictionary.count - 1))
+                        self.rkm.selectedDate = self.selectedDate!.addingTimeInterval(60.0 * 60.0 * 4)
                         self.calIsPresented.toggle()
 
                     }) {
