@@ -13,7 +13,6 @@ struct ContentView: View {
     
     @State var currView = "splash"
     @State var positionArray = [(Position, Date)]()
-    @State var favoriteArray = [Position]()
     @State var positionDictionary = [Date : Position]()
     @State var selectedPosition: Position?
     @State var selectedDate: Date?
@@ -28,7 +27,7 @@ struct ContentView: View {
             Color("bg").edgesIgnoringSafeArea(.all)
             VStack() {
                 if (self.currView == "splash") {
-                    SplashView(currView: self.$currView, positionDictionary: self.$positionDictionary, positionArray: self.$positionArray, favoriteArray: self.$favoriteArray)
+                    SplashView(currView: self.$currView, positionDictionary: self.$positionDictionary, positionArray: self.$positionArray)
                 } else if (self.currView == "welcome") {
                     WelcomeView(currView: self.$currView, selectedPosition: self.$selectedPosition, selectedDate: self.$selectedDate, positionDictionary: self.$positionDictionary, likeSelected: self.$likeSelected, dislikeSelected: self.$dislikeSelected, pastAvailable: self.$pastAvailable, futureAvailable: self.$futureAvailable)
                 } else if (self.currView == "position") {
