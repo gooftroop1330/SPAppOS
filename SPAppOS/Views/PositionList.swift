@@ -26,16 +26,16 @@ struct PositionList: View {
         HStack(alignment: .top, spacing: 15) {
             
             VStack(alignment: .center) {
-                Text("Positions").fontWeight(.thin).font(.system(size: UIScreen.main.bounds.width * 0.05))
+                Text("Positions").fontWeight(.light).font(.system(size: UIScreen.main.bounds.width * 0.05))
                         
-                Divider().padding([.leading,.trailing], 25)
+                Divider()
                 
                 ScrollView{
                     VStack(alignment: .leading, spacing: 15){
                         ForEach(self.dates, id: \.self) { date in
                             Group{
                                 Button(action: {self.selectPosition(date: date)}){
-                                    Text(self.positionDictionary[date]!.positionName!.description).font(.system(size: UIScreen.main.bounds.width * 0.03)).fontWeight(.thin).foregroundColor(Color.primary)
+                                    Text(self.positionDictionary[date]!.positionName!.description.capitalized).font(.system(size: UIScreen.main.bounds.width * 0.03)).fontWeight(.light).foregroundColor(Color.primary)
                                 }.padding(.leading, 15)
                                 Divider()
                             }
@@ -47,8 +47,8 @@ struct PositionList: View {
             
             Divider()
             VStack(alignment: .center) {
-                Text("Favorites").fontWeight(.thin).font(.system(size: UIScreen.main.bounds.width * 0.05))
-                Divider().padding([.leading,.trailing], 25)
+                Text("Favorites").fontWeight(.light).font(.system(size: UIScreen.main.bounds.width * 0.05))
+                Divider()
                 
                 ScrollView{
                     VStack(alignment: .leading, spacing: 15){
@@ -56,7 +56,7 @@ struct PositionList: View {
                             Group{
                                 if(self.positionDictionary[date]!.like == 1){
                                     Button(action: {self.selectPosition(date: date)}){
-                                        Text(self.positionDictionary[date]!.positionName!.description).font(.system(size: UIScreen.main.bounds.width * 0.03)).fontWeight(.thin).foregroundColor(Color("ourPink"))
+                                        Text(self.positionDictionary[date]!.positionName!.description.capitalized).font(.system(size: UIScreen.main.bounds.width * 0.03)).fontWeight(.light).foregroundColor(Color("ourPink"))
                                     }.padding(.leading, 15)
                                     Divider()
                                 }
@@ -101,5 +101,3 @@ struct PositionList: View {
     }
     
 }
-
-
