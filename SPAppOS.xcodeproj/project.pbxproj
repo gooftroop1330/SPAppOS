@@ -14,6 +14,7 @@
 		137FC7A4316D4293DE960BFD /* Pods_SPAppOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EFA4DFF4EFF221E259F55DC /* Pods_SPAppOS.framework */; };
 		5569181C242F881400F1C2F3 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5569181B242F881400F1C2F3 /* WelcomeView.swift */; };
 		55B77A952458C7EF00FD6AB8 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B77A942458C7EF00FD6AB8 /* ActivityIndicator.swift */; };
+		55B77A97245A4F1D00FD6AB8 /* PositionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B77A96245A4F1D00FD6AB8 /* PositionList.swift */; };
 		55E0D0A6243664A000F5111F /* RKCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E0D09F2436649E00F5111F /* RKCell.swift */; };
 		55E0D0A7243664A000F5111F /* RKDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E0D0A02436649E00F5111F /* RKDate.swift */; };
 		55E0D0A8243664A000F5111F /* RKColorSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E0D0A12436649E00F5111F /* RKColorSettings.swift */; };
@@ -69,6 +70,7 @@
 		4DFFA5AA1C353031DEE08371 /* Pods_SPAppOS_SPAppOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SPAppOS_SPAppOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5569181B242F881400F1C2F3 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		55B77A942458C7EF00FD6AB8 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		55B77A96245A4F1D00FD6AB8 /* PositionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionList.swift; sourceTree = "<group>"; };
 		55E0D09F2436649E00F5111F /* RKCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKCell.swift; sourceTree = "<group>"; };
 		55E0D0A02436649E00F5111F /* RKDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKDate.swift; sourceTree = "<group>"; };
 		55E0D0A12436649E00F5111F /* RKColorSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKColorSettings.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				11E2F41F2143632C448CC1A8 /* SplashView.swift */,
 				08830E452457811400F58EB1 /* PositionView.swift */,
 				55B77A942458C7EF00FD6AB8 /* ActivityIndicator.swift */,
+				55B77A96245A4F1D00FD6AB8 /* PositionList.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				11E2F06B3011689C0495617D /* SplashView.swift in Sources */,
 				927216B0243B772A00E0A909 /* RKTimeView.swift in Sources */,
 				55E0D0A8243664A000F5111F /* RKColorSettings.swift in Sources */,
+				55B77A97245A4F1D00FD6AB8 /* PositionList.swift in Sources */,
 				55E0D0AC243664A000F5111F /* RKManager.swift in Sources */,
 				55E0D0AA243664A000F5111F /* RKViewController.swift in Sources */,
 				55E0D0A7243664A000F5111F /* RKDate.swift in Sources */,

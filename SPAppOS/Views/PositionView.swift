@@ -24,6 +24,8 @@ struct PositionView: View {
     @State var leftDrag = false
     @Binding var pastAvailable: Bool
     @Binding var futureAvailable: Bool
+    @State var showList: Bool = false
+    @Binding var positionArray: [(Position, Date)]
     
     var rkm = RKManager(calendar: Calendar.current, minimumDate: Date(timeIntervalSinceReferenceDate: 599529600).addingTimeInterval(60*60*24), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
     
@@ -100,6 +102,15 @@ struct PositionView: View {
             }.padding(.bottom, 10)
             VStack {
                 HStack {
+                    Button(action: {self.showList.toggle()}){
+                        Image("menu").resizable().frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.width * 0.06).foregroundColor(Color.primary)
+                    }.sheet(isPresented: self.$showList){
+                        PositionList(selectedPosition: self.$selectedPosition, positionArray: self.$positionArray, selectedDate: self.$selectedDate, showList: self.$showList, likeSelected: self.$likeSelected, dislikeSelected: self.$dislikeSelected, futureAvailable: self.$futureAvailable, pastAvailable: self.$pastAvailable)
+                        
+                    }.padding(.leading, 10).onDisappear(){
+                        self.setPosition(date: self.selectedDate!)
+                    }
+                    Spacer()
                     Text(prepDate(toBePrepped: self.selectedDate!))
                         .foregroundColor(Color.primary)
                         .bold()
@@ -131,7 +142,7 @@ struct PositionView: View {
                 Spacer()
                 Text(self.selectedPosition!.positionName!.capitalized)
                     .foregroundColor(Color.primary)
-                    .font(.system(size: UIScreen.main.bounds.width * 0.05))
+                    .font(.system(size: UIScreen.main.bounds.width * 0.06))
                     .fontWeight(.thin)
                 Spacer()
                 HStack {
@@ -140,7 +151,7 @@ struct PositionView: View {
                             Image("back").resizable()
                             .frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.width * 0.06)
                             .foregroundColor(Color.primary)
-                            .padding()
+                            
                         }
                     }
                     Spacer()
@@ -151,10 +162,10 @@ struct PositionView: View {
                             Image("forward").resizable()
                             .frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.width * 0.06)
                             .foregroundColor(Color.primary)
-                            .padding()
+                            
                         }
                     }
-                }
+                }.padding()
                 Spacer()
                 ScrollView {
                     Text(self.selectedPosition!.positionDescription!)
@@ -162,8 +173,7 @@ struct PositionView: View {
                         .font(.system(size: UIScreen.main.bounds.width * 0.0375))
                         .padding(15)
                 }.padding(15)
-            }.animation(.spring())
-                .offset(x: self.dragOffset.width)
+            }.offset(x: self.dragOffset.width)
                 .gesture(DragGesture().onChanged{value in
                     if (value.translation.width > 0){
                         if (value.translation.width > 30) {
