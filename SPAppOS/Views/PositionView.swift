@@ -24,6 +24,7 @@ struct PositionView: View {
     @State var leftDrag = false
     @Binding var pastAvailable: Bool
     @Binding var futureAvailable: Bool
+    @State var showList: Bool = false
     
     var rkm = RKManager(calendar: Calendar.current, minimumDate: Date(timeIntervalSinceReferenceDate: 599529600).addingTimeInterval(60*60*24), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
     
@@ -100,6 +101,12 @@ struct PositionView: View {
             }.padding(.bottom, 10)
             VStack {
                 HStack {
+                    Button(action: {self.showList.toggle()}){
+                        Image("menu").resizable().frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.width * 0.06).foregroundColor(Color.primary)
+                    }.sheet(isPresented: self.$showList){
+                        PositionList(selectedPosition: self.$selectedPosition, positionDictionary: self.$positionDictionary, selectedDate: self.$selectedDate, showList: self.$showList, dates: [])
+                    }.padding(.leading, 10)
+                    Spacer()
                     Text(prepDate(toBePrepped: self.selectedDate!))
                         .foregroundColor(Color.primary)
                         .bold()
@@ -131,7 +138,7 @@ struct PositionView: View {
                 Spacer()
                 Text(self.selectedPosition!.positionName!.capitalized)
                     .foregroundColor(Color.primary)
-                    .font(.system(size: UIScreen.main.bounds.width * 0.05))
+                    .font(.system(size: UIScreen.main.bounds.width * 0.06))
                     .fontWeight(.thin)
                 Spacer()
                 HStack {
