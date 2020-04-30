@@ -151,7 +151,7 @@ struct PositionView: View {
                             Image("back").resizable()
                             .frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.width * 0.06)
                             .foregroundColor(Color.primary)
-                            .padding()
+                            
                         }
                     }
                     Spacer()
@@ -162,10 +162,10 @@ struct PositionView: View {
                             Image("forward").resizable()
                             .frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.width * 0.06)
                             .foregroundColor(Color.primary)
-                            .padding()
+                            
                         }
                     }
-                }
+                }.padding()
                 Spacer()
                 ScrollView {
                     Text(self.selectedPosition!.positionDescription!)
