@@ -104,8 +104,11 @@ struct PositionView: View {
                     Button(action: {self.showList.toggle()}){
                         Image("menu").resizable().frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.width * 0.06).foregroundColor(Color.primary)
                     }.sheet(isPresented: self.$showList){
-                        PositionList(selectedPosition: self.$selectedPosition, positionDictionary: self.$positionDictionary, selectedDate: self.$selectedDate, showList: self.$showList, dates: [])
-                    }.padding(.leading, 10)
+                        PositionList(selectedPosition: self.$selectedPosition, positionDictionary: self.$positionDictionary, selectedDate: self.$selectedDate, showList: self.$showList, dates: [], likeSelected: self.$likeSelected, dislikeSelected: self.$dislikeSelected, futureAvailable: self.$futureAvailable, pastAvailable: self.$pastAvailable)
+                        
+                    }.padding(.leading, 10).onDisappear(){
+                        self.setPosition(date: self.selectedDate!)
+                    }
                     Spacer()
                     Text(prepDate(toBePrepped: self.selectedDate!))
                         .foregroundColor(Color.primary)

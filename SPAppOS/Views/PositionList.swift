@@ -15,6 +15,11 @@ struct PositionList: View {
     @Binding var selectedDate: Date?
     @Binding var showList: Bool
     @State var dates: [Date]
+    @Binding var likeSelected: Bool
+    @Binding var dislikeSelected: Bool
+    @Binding var futureAvailable: Bool
+    @Binding var pastAvailable: Bool
+    
     
     var body: some View {
         
@@ -29,7 +34,7 @@ struct PositionList: View {
                     VStack(alignment: .leading, spacing: 15){
                         ForEach(self.dates, id: \.self) { date in
                             Group{
-                                Button(action: {self.selectPosition(date: date, pos: self.positionDictionary[date]!)}){
+                                Button(action: {self.selectPosition(date: date)}){
                                     Text(self.positionDictionary[date]!.positionName!.description).font(.system(size: UIScreen.main.bounds.width * 0.03)).fontWeight(.thin).foregroundColor(Color.primary)
                                 }.padding(.leading, 15)
                                 Divider()
@@ -50,7 +55,7 @@ struct PositionList: View {
                         ForEach(self.dates, id: \.self) { date in
                             Group{
                                 if(self.positionDictionary[date]!.like == 1){
-                                    Button(action: {self.selectPosition(date: date, pos: self.positionDictionary[date]!)}){
+                                    Button(action: {self.selectPosition(date: date)}){
                                         Text(self.positionDictionary[date]!.positionName!.description).font(.system(size: UIScreen.main.bounds.width * 0.03)).fontWeight(.thin).foregroundColor(Color("ourPink"))
                                     }.padding(.leading, 15)
                                     Divider()
@@ -68,9 +73,31 @@ struct PositionList: View {
         }
     }
     
-    func selectPosition(date: Date, pos: Position) {
+    func selectPosition(date: Date) {
         self.selectedDate = date
-        self.selectedPosition = pos
+        self.setPosition(date: date)
+        self.showList.toggle()
+    }
+    
+    func setPosition(date: Date) {
+        self.selectedPosition = self.positionDictionary[date]
+        self.pastAvailable = true
+        self.futureAvailable = true
+        if (self.selectedPosition!.like == -1) {
+            self.dislikeSelected = true
+            self.likeSelected = false
+        } else if (self.selectedPosition!.like == 1) {
+            self.likeSelected = true
+            self.dislikeSelected = false
+        } else {
+            self.likeSelected = false
+            self.dislikeSelected = false
+        }
+        if (date == Date(timeIntervalSinceReferenceDate: 599529600)) {
+            self.pastAvailable = false
+        } else if (date == Date(timeIntervalSinceReferenceDate: 599529600).addingTimeInterval(60.0 * 60 * 24 * Double(self.positionDictionary.count - 1))) {
+            self.futureAvailable = false
+        }
     }
     
 }
