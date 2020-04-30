@@ -25,12 +25,16 @@ struct PositionList: View {
                         
                 Divider().padding([.leading,.trailing], 25)
                 
-                VStack(alignment: .leading, spacing: 15){
-                    List{
-                        ForEach(dates, id: \.self) { date in
-                            Button(action: {self.selectPosition(date: date, pos: self.positionDictionary[date]!)}){
-                                Text(self.positionDictionary[date]!.positionName!.description).font(.system(size: UIScreen.main.bounds.width * 0.03)).fontWeight(.thin).foregroundColor(Color.primary)
-                            }.padding(.leading, 15)
+                ScrollView{
+                    VStack(alignment: .leading, spacing: 15){
+                        ForEach(self.dates, id: \.self) { date in
+                            Group{
+                                Button(action: {self.selectPosition(date: date, pos: self.positionDictionary[date]!)}){
+                                    Text(self.positionDictionary[date]!.positionName!.description).font(.system(size: UIScreen.main.bounds.width * 0.03)).fontWeight(.thin).foregroundColor(Color.primary)
+                                }.padding(.leading, 15)
+                                Divider()
+                            }
+                            
                         }
                     }
                 }
@@ -41,13 +45,16 @@ struct PositionList: View {
                 Text("Favorites").fontWeight(.thin).font(.system(size: UIScreen.main.bounds.width * 0.05))
                 Divider().padding([.leading,.trailing], 25)
                 
-                VStack(alignment: .leading, spacing: 15){
-                    Group{
-                        List(dates, id: \.self) { date in
-                            if(self.positionDictionary[date]!.like == 1){
-                                Button(action: {self.selectPosition(date: date, pos: self.positionDictionary[date]!)}){
-                                    Text(self.positionDictionary[date]!.positionName!.description).font(.system(size: UIScreen.main.bounds.width * 0.03)).fontWeight(.thin).foregroundColor(Color("ourPink"))
-                                }.padding(.leading, 15)
+                ScrollView{
+                    VStack(alignment: .leading, spacing: 15){
+                        ForEach(self.dates, id: \.self) { date in
+                            Group{
+                                if(self.positionDictionary[date]!.like == 1){
+                                    Button(action: {self.selectPosition(date: date, pos: self.positionDictionary[date]!)}){
+                                        Text(self.positionDictionary[date]!.positionName!.description).font(.system(size: UIScreen.main.bounds.width * 0.03)).fontWeight(.thin).foregroundColor(Color("ourPink"))
+                                    }.padding(.leading, 15)
+                                    Divider()
+                                }
                             }
                         }
                     }
