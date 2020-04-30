@@ -14,7 +14,7 @@ struct SplashView: View {
     
     @Binding var currView: String
     @Binding var positionDictionary: [Date : Position]
-    @Binding var positionArray: [Position]
+    @Binding var positionArray: [(Position, Date)]
     @Binding var favoriteArray: [Position]
     
     
@@ -242,16 +242,15 @@ struct SplashView: View {
     func makePositionArray() {
         let lastDate = Date(timeIntervalSinceReferenceDate: 599529600).addingTimeInterval(60.0 * 60 * 24 * Double(self.positionDictionary.count - 1))
         for i in 0...399 {
-            self.positionArray.append(self.positionDictionary[lastDate.addingTimeInterval(60.0 * 60.0 * -24 * Double(i))]!)
+            let newPosIndex: (Position, Date) = (self.positionDictionary[lastDate.addingTimeInterval(60.0 * 60.0 * -24 * Double(i))]!, lastDate.addingTimeInterval(60.0 * 60.0 * -24 * Double(i)))
+            self.positionArray.append(newPosIndex)
         }
-        let sorted = self.positionArray.sorted(by: {$0.positionName!.lowercased() < $1.positionName!.lowercased()})
-        for pos in sorted {
-            print(pos.positionName!)
-        }
+        let sorted = self.positionArray.sorted(by: {$0.0.positionName!.lowercased() < $1.0.positionName!.lowercased()})
+        self.positionArray = sorted
     }
     
     func makeFavoriteArray() {
-        print("fav array")
+        
     }
     
     //Adds 400 new populated days
@@ -281,7 +280,7 @@ struct SplashView: View {
             ActivityIndicator().frame(width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.width * 0.5).foregroundColor(Color("ourPink")).onAppear(perform: {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     //DELETE THIS LINE BEFORE DEPLOYING
-                    //self.deleteCoreStuff()
+                    self.deleteCoreStuff()
                     if (self.positions.count == 0) {
                         self.initialize()
                     } else if (!self.checkDateFound()) {

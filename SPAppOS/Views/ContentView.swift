@@ -10,8 +10,9 @@ import SwiftUI
 
 struct ContentView: View {
     
+    
     @State var currView = "splash"
-    @State var positionArray = [Position]()
+    @State var positionArray = [(Position, Date)]()
     @State var favoriteArray = [Position]()
     @State var positionDictionary = [Date : Position]()
     @State var selectedPosition: Position?
