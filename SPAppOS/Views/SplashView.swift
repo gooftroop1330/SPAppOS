@@ -247,6 +247,9 @@ struct SplashView: View {
         }
         let sorted = self.positionArray.sorted(by: {$0.0.positionName!.lowercased() < $1.0.positionName!.lowercased()})
         self.positionArray = sorted
+        for pos in self.positionArray {
+            print(pos)
+        }
     }
     
     func makeFavoriteArray() {
