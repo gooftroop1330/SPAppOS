@@ -14,6 +14,8 @@ struct SplashView: View {
     
     @Binding var currView: String
     @Binding var positionDictionary: [Date : Position]
+    @Binding var positionArray: [Position]
+    @Binding var favoriteArray: [Position]
     
     
     //ONLY FOR TESTING PURPOSES - DELETES ALL MOC DATA
@@ -233,6 +235,23 @@ struct SplashView: View {
                 }
             }
         }
+        makePositionArray()
+        makeFavoriteArray()
+    }
+    
+    func makePositionArray() {
+        let lastDate = Date(timeIntervalSinceReferenceDate: 599529600).addingTimeInterval(60.0 * 60 * 24 * Double(self.positionDictionary.count - 1))
+        for i in 0...399 {
+            self.positionArray.append(self.positionDictionary[lastDate.addingTimeInterval(60.0 * 60.0 * -24 * Double(i))]!)
+        }
+        let sorted = self.positionArray.sorted(by: {$0.positionName!.lowercased() < $1.positionName!.lowercased()})
+        for pos in sorted {
+            print(pos.positionName!)
+        }
+    }
+    
+    func makeFavoriteArray() {
+        print("fav array")
     }
     
     //Adds 400 new populated days
