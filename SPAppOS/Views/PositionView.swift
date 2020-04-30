@@ -173,8 +173,7 @@ struct PositionView: View {
                         .font(.system(size: UIScreen.main.bounds.width * 0.0375))
                         .padding(15)
                 }.padding(15)
-            }.animation(.spring())
-                .offset(x: self.dragOffset.width)
+            }.offset(x: self.dragOffset.width)
                 .gesture(DragGesture().onChanged{value in
                     if (value.translation.width > 0){
                         if (value.translation.width > 30) {
