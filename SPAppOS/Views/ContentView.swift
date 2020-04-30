@@ -32,7 +32,7 @@ struct ContentView: View {
                 } else if (self.currView == "welcome") {
                     WelcomeView(currView: self.$currView, selectedPosition: self.$selectedPosition, selectedDate: self.$selectedDate, positionDictionary: self.$positionDictionary, likeSelected: self.$likeSelected, dislikeSelected: self.$dislikeSelected, pastAvailable: self.$pastAvailable, futureAvailable: self.$futureAvailable)
                 } else if (self.currView == "position") {
-                    PositionView(currView: self.$currView, selectedPosition: self.$selectedPosition, positionDictionary: self.$positionDictionary, selectedDate: self.$selectedDate, likeSelected: self.$likeSelected, dislikeSelected: self.$dislikeSelected, pastAvailable: self.$pastAvailable, futureAvailable: self.$futureAvailable)
+                    PositionView(currView: self.$currView, selectedPosition: self.$selectedPosition, positionDictionary: self.$positionDictionary, selectedDate: self.$selectedDate, likeSelected: self.$likeSelected, dislikeSelected: self.$dislikeSelected, pastAvailable: self.$pastAvailable, futureAvailable: self.$futureAvailable, positionArray: self.$positionArray)
                 }
             }
         }

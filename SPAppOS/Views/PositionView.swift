@@ -25,6 +25,7 @@ struct PositionView: View {
     @Binding var pastAvailable: Bool
     @Binding var futureAvailable: Bool
     @State var showList: Bool = false
+    @Binding var positionArray: [(Position, Date)]
     
     var rkm = RKManager(calendar: Calendar.current, minimumDate: Date(timeIntervalSinceReferenceDate: 599529600).addingTimeInterval(60*60*24), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
     
@@ -104,7 +105,7 @@ struct PositionView: View {
                     Button(action: {self.showList.toggle()}){
                         Image("menu").resizable().frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.width * 0.06).foregroundColor(Color.primary)
                     }.sheet(isPresented: self.$showList){
-                        PositionList(selectedPosition: self.$selectedPosition, positionDictionary: self.$positionDictionary, selectedDate: self.$selectedDate, showList: self.$showList, dates: [], likeSelected: self.$likeSelected, dislikeSelected: self.$dislikeSelected, futureAvailable: self.$futureAvailable, pastAvailable: self.$pastAvailable)
+                        PositionList(selectedPosition: self.$selectedPosition, positionArray: self.$positionArray, selectedDate: self.$selectedDate, showList: self.$showList, likeSelected: self.$likeSelected, dislikeSelected: self.$dislikeSelected, futureAvailable: self.$futureAvailable, pastAvailable: self.$pastAvailable)
                         
                     }.padding(.leading, 10).onDisappear(){
                         self.setPosition(date: self.selectedDate!)
